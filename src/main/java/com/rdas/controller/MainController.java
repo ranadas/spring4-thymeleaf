@@ -1,16 +1,21 @@
 package com.rdas.controller;
 
 import com.rdas.exception.CustomGenericException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    private DataSource dataSource;
 
     @RequestMapping(value = {"/hello", "/"}, method = RequestMethod.GET)
     public String hello(@RequestParam(value="name", defaultValue = "called withot empty name param") String name, Model model) {
