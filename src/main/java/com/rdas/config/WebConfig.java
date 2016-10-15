@@ -2,9 +2,11 @@ package com.rdas.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -73,4 +75,11 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 //    }
 
 
+    @Bean(name ="messageSource")
+    public MessageSource getMessageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("/resources/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 }
