@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by rdas on 15/10/2016.
  */
+@ActiveProfiles({"qa"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class})
@@ -43,7 +45,7 @@ public class MainControllerTest {
     public void shouldReturnErrorView() throws Exception {
         mockMvc.perform(get("/anything"))
                 .andDo(print())
-                .andExpect(view().name("index"))
+                .andExpect(view().name("hello"))
                 .andReturn()
                 //.andExpect(content().contentType("text/html;charset=ISO-8859-1"))
 //                .andExpect(content().string(containsString("anything")))

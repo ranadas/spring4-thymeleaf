@@ -65,9 +65,13 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.185</version>
+            <version>${h2.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${org.jooq.version}</version>
+        </dependency>
         <!--testing-->
         <dependency>
             <groupId>junit</groupId>
@@ -152,10 +156,12 @@
         </plugins>
     </build>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring_version>4.3.3.RELEASE</spring_version>
-        <angular_version>1.5.8</angular_version>
         <lombok_version>1.16.10</lombok_version>
         <thymeleaf_version>3.0.2.RELEASE</thymeleaf_version>
         <logback_version>1.1.7</logback_version>
+        <h2.version>1.4.185</h2.version>
+        <org.jooq.version>3.8.4</org.jooq.version>
     </properties>
 </project>

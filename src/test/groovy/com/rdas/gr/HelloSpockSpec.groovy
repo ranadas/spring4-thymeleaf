@@ -1,29 +1,24 @@
 package  com.rdas.gr
 
 import com.rdas.testci.TestingConfiguration
-import com.rdas.util.Transformer
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
+import spock.lang.Specification
+
+import javax.sql.DataSource
 
 //@WebAppConfiguration
 //@IntegrationTest
+@ActiveProfiles("qa")
 @ContextConfiguration(classes = [TestingConfiguration])
-class HelloSpockSpec extends spock.lang.Specification {
-
+class HelloSpockSpec extends Specification {
 
     @Autowired
-    private Transformer transformer
+    private DataSource dataSource
 
-
-    def "length of Spock's and his friends' names"() {
+    def "asssert that ds is injected"() {
         expect:
-        transformer != null
-        name.size() == length
-
-        where:
-        name     | length
-        "Spock"  | 5
-        "Kirk"   | 4
-        "Scotty" | 6
+        dataSource != null
     }
 }
