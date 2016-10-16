@@ -22,7 +22,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("com.rdas")
+@ComponentScan({"com.rdas.controller", "com.rdas.profiled", "com.rdas.service"})
 public class WebConfig extends WebMvcConfigurerAdapter{
     @Autowired
     private ApplicationContext applicationContext;
@@ -33,7 +33,6 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/resources/static/css/**").addResourceLocations("/resources/static/css/");
         registry.addResourceHandler("/resources/static/views/**").addResourceLocations("/resources/static/views/");
         registry.addResourceHandler("/resources/static/**").addResourceLocations("/resources/static/");
-
     }
 
     @Bean

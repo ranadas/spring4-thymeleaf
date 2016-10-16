@@ -1,6 +1,7 @@
 package com.rdas.controller;
 
 import com.rdas.exception.CustomGenericException;
+import com.rdas.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,12 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class MainController {
 
     @Autowired
-    private DataSource dataSource;
+    private BookService bookService;
 
     @RequestMapping(value = {"/hello", "/"}, method = RequestMethod.GET)
     public String hello(@RequestParam(value="name", defaultValue = "called withot empty name param") String name, Model model) {
@@ -44,5 +46,13 @@ public class MainController {
             return new ModelAndView("hello").addObject("name", type);
         }
 
+    }
+
+    @RequestMapping(value = {"/authors/all"}, method = RequestMethod.GET)
+    public String showAuthors(Model model) {
+        List all = bookService.findAll();
+        model.addAttribute("name", "Authors Listing");
+        model.addAttribute("authors", all);
+        return "hello";
     }
 }
