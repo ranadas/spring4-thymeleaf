@@ -122,6 +122,29 @@
             <version>2.0M10</version>
         </dependency>
 
+        <!-- to detect user agent-->
+        <dependency>
+            <groupId>net.sf.uadetector</groupId>
+            <artifactId>uadetector-core</artifactId>
+            <version>0.9.22</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.uadetector</groupId>
+            <artifactId>uadetector-json</artifactId>
+            <version>0.1.22</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.uadetector</groupId>
+            <artifactId>uadetector-resources</artifactId>
+            <version>2014.04</version>
+        </dependency>
+
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.19</version>
+        </dependency>
+
     </dependencies>
 
     <build>
