@@ -1,7 +1,10 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
-var util = require('gulp-util');
+var util = require('gulp-util'); // for using the util.log
+var gulpprint = require('gulp-print'); // for printing all src files being accessed.
+var gulpif = require('gulp-if'); // for using gulp if. e.g .pipe(gulpif(args.verbose, gulpprint()))
+var args = require('yargs').argv; // for processing command line arguments. e.g. .pipe(gulpif(args.verbose, gulpprint()))
 
 //Ignore all .min files
 gulp.task('vet', function () {
@@ -10,6 +13,7 @@ gulp.task('vet', function () {
         .src(['./src/**/*.js',
             './*.js',
             '!./src/**/*.min.js'])
+        .pipe(gulpif(args.verbose, gulpprint()))
         .pipe(jscs())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish', {verbose: true}))
