@@ -70,6 +70,17 @@ INSERT INTO book_to_book_store VALUES
 	('Barnes and Noble', 3, 2),
 	('Payot', 3, 1);
 
+DROP ALIAS IF EXISTS REVERSESTRING
+;
+--CREATE ALIAS REVERSESTRING AS $$ String reverse(String s) { return new StringBuilder(s).reverse().toString(); } $$ ;
+--
+-- CREATE ALIAS NEXT_PRIME AS $$
+-- String nextPrime(String value) {
+--     return new BigInteger(value).nextProbablePrime().toString();
+-- }
+-- $$
+-- ;
+
 -- DROP ALIAS IF EXISTS count_books;
 --
 -- CREATE OR REPLACE ALIAS count_books AS $$

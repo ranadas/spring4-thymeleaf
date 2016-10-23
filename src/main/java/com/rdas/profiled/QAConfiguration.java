@@ -31,6 +31,7 @@ public class QAConfiguration {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         builder.setType(EmbeddedDatabaseType.H2);
         builder.setName("QA-Database");
+        builder.setScriptEncoding("UTF-8");
         builder.addScript("classpath:db-h2.sql");
         return builder.build();
             /*
