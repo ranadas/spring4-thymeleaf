@@ -13,16 +13,20 @@ public class GlobalExceptionAdvice {
 
     @ExceptionHandler(CustomGenericException.class)
     public ModelAndView handleCustomException(CustomGenericException ex) {
-        ModelAndView model = new ModelAndView("error/generic_error");
+        ModelAndView model = new ModelAndView();
         model.addObject("errCode", ex.getErrCode());
         model.addObject("errMsg", ex.getErrMsg());
+        model.addObject("errorMessage", "This can't possible be empty");
+        model.setViewName("error/generic_error");
         return model;
     }
 
     @ExceptionHandler(Exception.class)
     public ModelAndView handleAllException(Exception ex) {
-        ModelAndView model = new ModelAndView("error/generic_error");
+        ModelAndView model = new ModelAndView();
         model.addObject("errMsg", "this is Exception.class");
+        model.addObject("errorMessage", "This can't possible be empty2");
+        model.setViewName("error/generic_error");
         return model;
     }
 //    /*
